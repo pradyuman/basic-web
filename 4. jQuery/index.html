@@ -1,0 +1,56 @@
+<html>
+<head>
+	<title>Learning jQuery</title>
+	
+	<meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<script type="text/javascript" src="jquery.min.js"></script>
+	
+	<style>
+	
+	body {
+		font-family:Calibri,Verdana,sans-serif;
+	}
+	.square {
+		height:100px;
+		width:100px;
+		background-color:red;
+	}
+	
+	#circle {
+		height:100px;
+		width:100px;
+		background-color:green;
+		border-radius:50%;
+	}
+	
+	</style>
+		
+</head>
+
+<body>
+
+	<h1>Asyncronous Javascript and XML</h1>
+	
+	<div id="output"></div>
+	
+	<script>
+	
+		$.ajax({
+		
+			url:"test.html"
+			
+		}).done(function(data){
+		
+			$("h1").append(" " + data);
+			
+		});
+		
+		
+	</script>
+	
+</body>
+
+</html>

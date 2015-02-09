@@ -1,0 +1,169 @@
+<html>
+<head>
+	<title>Learning jQuery - Form Validation</title>
+	
+	<meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<script type="text/javascript" src="jquery.min.js"></script>
+	
+	<style>
+	
+	body {
+		font-family: Calibri, Verdana, sans-serif;
+		font-color:#383838;
+	}
+	
+	#form {
+		width:600px;
+		margin:0 auto;
+		font-size:1.2em;
+	}
+	
+	input {
+		width:300px;
+		height:30px;
+		padding:5px;
+		border-radius:5px;
+		font-size:1.2em;
+		border:1px solid gray;
+		margin-bottom:10px;
+	}
+	
+	label {
+		width:180px;
+		float:left;
+		padding-top:3px;
+	}
+	
+	#submitButton {
+		font-size:1em;
+		margin-left:180px;
+		width:100px;
+	}
+	
+	#erroremail {
+		margin-left:180px;
+		font-size:0.9em;
+		border-radius:5px;
+	}
+	
+	#errorphone {
+		margin-left:180px;
+		font-size:0.9em;
+		border-radius:5px;
+	}
+	
+	#errorpassword {
+		margin-left:180px;
+		font-size:0.9em;
+		border-radius:5px;
+	}
+	
+	</style>
+		
+</head>
+
+<body>
+
+	<div id="form">
+	
+	<form id="validatedForm">
+	
+		<label for="email"> Email </label>
+		<input name="email" id="email"/>
+		<div id="erroremail"></div>
+		
+		<label for="phone"> Phone </label>
+		<input name="phone" id="phone"/>
+		<div id="errorphone"></div>
+		
+		<label for="password"> Password </label>
+		<input name="password" type="password" id="password"/>
+
+		
+		<label for="password"> Confirm Password </label>
+		<input name="password" type="password" id="confirm"/>
+		<div id="errorpassword"></div>
+		
+		<input id="submitButton" type="submit" value="Submit" />
+
+	</form>
+
+	</div>
+	
+	<script>
+	
+		$("#validatedForm").submit(function(event) {
+		
+			var error = 0;
+		
+			clearerror("#erroremail");
+			clearerror("#errorphone");
+			clearerror("#errorpassword");
+		
+			event.preventDefault();
+			
+			if (!isValidEmailAddress($("#email").val())) {
+				
+				$("#erroremail").html("The email address provided is invalid");
+				styleerror("#erroremail");
+				error = 1
+				
+			}
+			
+			if (!$.isNumeric($("#phone").val())) {
+				
+				$("#errorphone").html("The phone number provided is invalid");
+				styleerror("#errorphone");
+				error=1;
+				
+			}
+			
+			if($("#password").val() != $("#confirm").val()) {
+			
+				$("#errorpassword").html("The passwords do not match");
+				styleerror("#errorpassword");
+				error=1;
+				
+			}
+			
+			if (error != 1) {
+				
+				$("#submitButton").animate({
+					"width":"250px"
+				},800);
+				$("#submitButton").val("Submitted successfully");
+				
+			}
+			
+			function isValidEmailAddress(emailAddress) {
+    		var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
+   			return pattern.test(emailAddress);
+			};
+			
+			function styleerror(errortype) {
+				$(errortype).css("backgroundColor", "#CC6666");
+				$(errortype).css("width", "280px");
+				$(errortype).css("height", "20px");
+				$(errortype).css("marginBottom", "10px");
+				$(errortype).css("padding", "5px 5px 5px 15px");
+			}
+			
+			function clearerror(errortype) {
+				$(errortype).html("");
+				$(errortype).css("backgroundColor", "none");
+				$(errortype).css("width", "0");
+				$(errortype).css("height", "0");
+				$(errortype).css("marginBottom", "0");
+				$(errortype).css("padding", "0");
+			}
+			
+		});
+		
+	</script>
+	
+</body>
+
+</html>

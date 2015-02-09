@@ -1,0 +1,296 @@
+		body {
+			margin:0;
+			font-family:arial,helvetica,sans-serif;
+		}
+		
+		#topbar {
+			background-color:#7A0000;
+			width:100%;
+			height:40px;
+			color:white;
+		}		
+		
+		.fixedwidth {
+			width:990px;
+			margin: 0 auto;
+		}
+		
+		#logodiv {
+			padding-top:4px;
+			float:left;
+			border-right:1px solid #990000;
+			padding-right:5px;
+			height:36px;
+		}
+		
+		#logospace {
+			width:185px;
+			height:40px;
+			float:left;
+			border-right:1px solid #990000;
+		}
+		
+		#topmenu {
+			float:left;
+			margin:0;
+			padding:0;
+			
+		}
+		
+		#topmenu ul {
+			margin:0;
+			padding:0;
+		}
+		
+		#topmenu li {
+			font-size:0.83em;
+			list-style:none;
+			font-weight:bold;
+			float:left;
+			padding:11px 11px;
+			height:18px;
+			border-right:1px solid #990000;
+		}
+		
+		#search {
+			float:left;
+			padding:8px;
+		}
+		
+		#search input {
+			height:24px;
+			width:144px;
+			border:none;
+			font-size:0.9em;
+			font-weight:bold;
+			padding:5px 5px 5px 8px;
+			color:#404040;
+			background-image:url('images/magnifyglass.PNG');
+			background-repeat:no-repeat;
+			background-position:right center;
+		}
+		
+		.break {
+			clear:both;
+		}
+		
+		#newsbar {
+			background-color:#990000;
+			width:100%;
+			height:88px;
+			color:white;
+		}
+		
+		#newsbar p {
+			float:left;
+			margin:0;
+			padding:0;
+			padding-top:6px;
+		}
+		
+		#newsheader {
+			font-size:2.8em;
+		}
+		
+		#UK {
+			font-size:0.65em;
+			padding-left:15px;
+		}
+		
+		#rss {
+			float:right;
+			font-size:0.88em;
+			font-weight:bold;
+			padding:40px 15px 0px 0px;
+		}
+		
+		#rss img {
+			height:14px;
+		}
+		
+		#topicmenu {
+			padding-top:4.5px;
+		}
+		
+		#topicmenu ul{
+			background-color:#3E0C0D;
+			height:15.5px;
+			padding:5px 2px;
+			margin:0;			
+		}
+		
+		#topicmenu li{
+			list-style:none;
+			font-weight:bold;
+			float:left;
+			padding-right:5px;
+			padding-left:5px;
+			font-size:0.75em;
+			border-right:1px solid #5B2D2F;
+		}
+		
+		#submenu ul{
+			background-color:#EDEDED;
+			height:15.5px;
+			padding:5px 2px;
+			margin:0;			
+		}
+		
+		#submenu li{
+			color:#505052;
+			list-style:none;
+			font-weight:bold;
+			float:left;
+			padding-right:7px;
+			padding-left:7px;
+			font-size:0.75em;
+			border-right:1px solid #CCCCCC;
+		}
+		
+		.selected {
+			background-color:#EDEDED;
+			color:#505052;
+			height:20.5px;
+			position:relative;
+			top:-5px;
+			padding-top:5px !important;
+		}
+		
+		#content {
+			width:100%;
+			color:#535353;
+			font-size:0.8em;
+		}
+		
+		.date {
+			font-weight:bold;
+		}
+		
+		#content h1 {
+			color:#1F4F82;
+			font-size:2.4em;
+		}
+		
+		#headlineimg {
+			float:left;
+			position:relative;
+			top:-14px;
+		}
+		
+		.headlinetext {
+			width:300px;
+			position:relative;
+			left:15px;
+			top:-20px;
+			font-size:1.1em;
+			float:left;
+		}
+		
+		.headlinetext p {
+			margin:3px 0px;
+		}
+		
+		.headlinetext a {
+			color:#1F4F82;
+			text-decoration:none;
+		}
+		
+		a {
+			text-decoration:none;
+		}
+		
+		a:hover {
+			text-decoration:underline;
+		}
+		
+		.headlinetext a:visited {
+			color:#4A7196;
+		}
+		
+		.video {
+			background-image:url("images/videoicon.PNG");
+			background-repeat:no-repeat;
+			background-position:left center;
+			padding-left:24px;
+		}
+		
+		#watchlisten {
+			background-color:#EEEEEE;
+			float:right;
+			width:349px;
+			height:200px;
+			margin:0;
+			padding:0;
+			position:relative;
+			top:-20px;
+		}
+		
+		#watchlisten h2{
+			color:#505050;
+			margin:10px 0px 10px 10px;
+			font-size:1.8em;
+		}
+		
+		.boxes {
+			float:right;
+			height:14px;
+			margin:20px 10px 0 0;
+		}
+		
+		#leftarrow {
+			float:left;
+			border-right:1px solid white;
+			height:124px;
+		}
+		
+		#rightarrow {
+			float:left;
+			height:124px;
+		}
+		
+		.wlblock {
+			background-color:#D1700E;
+			width:149.5px;
+			height:124px;
+			float:left;
+			border-right:1px solid white;
+		}
+		
+		.wlblock img {
+			height:85px;
+		}
+		
+		.wlblock a {
+			color:white;
+		}
+		
+		.wlblock p {
+			margin:2px 5px 0px 8px;
+			font-size:1.05em;
+			
+		}
+		
+		#watchlisten ul {
+			position:relative;
+			top:-5px;
+			margin:2px;
+			padding:0 0 0 4px;
+		}
+		
+		#watchlisten li {
+			font-size:1.05em;
+			font-weight:bold;
+			list-style:none;
+			background-image:url("images/live.PNG");
+			background-repeat:no-repeat;
+			background-position:left center;
+			padding:9px 0 10px 35px;
+		}
+		
+		#watch a {
+			color:#1F4F82;
+		}
+		
+		#watch a:visited {
+			color:#4A7196;
+		}

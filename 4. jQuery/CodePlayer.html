@@ -1,0 +1,228 @@
+<html>
+<head>
+	<title>Learning jQuery - Form Validation</title>
+	
+	<meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<script type="text/javascript" src="jquery.min.js"></script>
+	
+	<style>
+	
+	body {
+   		font-family:"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   		font-weight:300;
+		font-color:#383838;
+		margin:0;
+		padding:0;
+	}
+	
+	.clear {
+		clear:both;
+	}
+	
+	#header {
+		height:36px;
+		width:100%;
+		background-color:#EDEDED;
+		border-bottom:1px solid gray;
+	}
+	
+	#logo {
+		padding:7px;
+		font-size:1.2em;
+		font-weight:bold;
+		float:left;
+	}
+	
+	#buttonDiv {
+		float:right;
+		padding:4px 10px 0px 0px;
+	}
+	
+	#runButton {
+		font-size:1.1em;
+	}
+	
+	#toggles {
+		position:relative;
+		top:3px;
+		border:1px solid gray;
+		border-radius:3px;
+		width:247.49px;
+		height:28px;
+		list-style:none;
+		padding:0;
+		margin:0 auto;
+	}
+	
+	#toggles li{
+		float:left;
+		border-right:1px solid gray;
+		padding:5px 13px;
+	}
+	
+	.codeContainer {
+		height:100%;
+		width:50%;
+		float:left;
+		font-color:#383838;
+		position:relative;
+	}
+	
+	.codeContainer textarea {
+		height:100%;
+		width:100%;
+		border:none;
+		border-right:1px solid gray;
+		font-family: "Courier New", "Lucida Console", monotype;
+		font-size:1em;
+		padding:10px;
+	}
+	
+	.codeLabel {
+		position:absolute;
+		right:10px;
+		top:8px;
+		background-color:#888888;
+		border-radius:3px;
+		padding:3px;
+	}
+	
+	#cssContainer {
+		display:none;
+	}
+	
+	#jsContainer {
+		display:none;
+	}
+	
+	#resultContainer iframe {
+		height:100%;
+		width:80%;
+		position:relative;
+		left:10px;
+		top:10px;
+		border:none;
+	}
+	
+	.selected {
+		background-color:gray;		
+	}
+	
+	</style>
+		
+</head>
+
+<body>
+
+	<div id="wrapper">
+	
+		<div id="header">
+		
+			<div id="logo">CodePlayer</div>
+			
+			<div id="buttonDiv">
+			
+				<button id="runButton">Run</button>
+			
+			</div>
+			
+			<ul id="toggles">
+			
+				<li class="toggle selected">HTML</li>
+				<li class="toggle">CSS</li>
+				<li class="toggle">JS</li>
+				<li class="toggle selected" style="border:none">Result</li>
+			
+			</ul>
+		
+		</div>
+		
+		<div class="clear"></div>
+		
+		<div class="codeContainer" id="htmlContainer">
+			
+			<div class="codeLabel">HTML</div>	
+			
+			<textarea id="htmlCode" placeholder="Write HTML here"></textarea>
+		
+		</div>
+		
+		<div class="codeContainer" id="cssContainer">
+			
+			<div class="codeLabel">CSS</div>	
+			
+			<textarea id="cssCode" placeholder="Write CSS here"></textarea>
+		
+		</div>
+		
+		<div class="codeContainer" id="jsContainer">
+			
+			<div class="codeLabel">Javascript</div>	
+			
+			<textarea id="jsCode" placeholder="Write JavaScript here"></textarea>
+		
+		</div>
+		
+			<div class="codeContainer" id="resultContainer">
+			
+			<div class="codeLabel">Result</div>	
+			
+			<iframe id="resultiframe"></iframe>
+		
+		</div>
+		
+	
+	</div>
+	
+	<script>
+	
+		//Set the codeContainer class height to "window height - header height";
+		var windowHeight = $(window).height();
+		var headerHeight = $("#header").height();
+		var codeContainerHeight = windowHeight-headerHeight-20;
+		
+		$(".codeContainer").height(codeContainerHeight+"px");
+		
+		//Generate toggle functionality
+		
+		$(".toggle").click(function() {
+			
+			//Changing color of toggles
+			$(this).toggleClass("selected");
+			
+			//Toggle display of HTML/CSS/JS/Result divs
+			var selectedDiv = $(this).html().toLowerCase();
+			
+			$("#"+selectedDiv+"Container").toggle();
+			
+			//Figuring out how many divs are showing (it will be an array of true values and the length of the array = to # of divs showing)
+			var showingDivs = $(".codeContainer").filter(function() {
+				
+				return($(this).css("display") != "none");
+				
+			}).length; //Finding length of array to see how many divs are showing
+			
+			//Calculating desired width of divs based on number of showing divs
+			var width = 100 / showingDivs;
+			
+			//Changing the div width
+			$(".codeContainer").css("width", width + "%");
+			
+		});
+		
+		$("#runButton").click(function() {
+			
+			$("#resultiframe").contents().find("html").html('<style>'+$("#cssCode").val()+'</style>' + $("#htmlCode").val());
+			
+			document.getElementById("resultiframe").contentWindow.eval($("#jsCode").val());
+			
+		});
+	
+	</script>
+	
+</body>
+
+</html>

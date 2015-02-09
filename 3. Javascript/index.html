@@ -1,0 +1,55 @@
+<html>
+<head>
+	<title>Learning Javascript</title>
+	
+	<meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+	<style>
+		#circle {
+			height:200px;
+			width:200px;
+			border-radius:50%;
+			background-color:red;
+		}
+	</style>
+</head>
+<body>
+	
+	<p>How many fingers are you holding up?</p>
+	
+	<input id="fingers" type="text"/>
+	<button id="myButton">Guess!</button>
+	
+	<div id="output"></div>
+	
+	<script type="text/javascript">
+	
+		document.getElementById("myButton").onclick=function() {
+			
+			var x=Math.floor(6*Math.random());
+			
+			var fingers = document.getElementById("fingers").value;
+			
+			var i=0;
+			
+			while (x != fingers) {
+			
+				x=Math.floor(6*Math.random());
+				
+				i++;
+			}
+			
+			document.getElementById("output").innerHTML = "I got it! It was a " + x + " It took " + i + " tries to get the number.";
+			
+			
+			
+			
+		}
+	
+	</script>
+	
+	
+</body>
+</html>

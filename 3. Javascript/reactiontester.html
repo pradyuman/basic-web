@@ -1,0 +1,100 @@
+<html>
+<head>
+	<title>Learning Javascript</title>
+	
+	<meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+	<style>
+		body {
+			font-family:Calibri,Verdana, sans-serif;
+		}
+		
+		#box {
+			height:100px;
+			width:100px;
+			background-color:purple;
+			display:none;
+			position:relative;
+		}
+		
+		.bold {
+			font-weight:bold;
+		}
+		
+	</style>
+</head>
+<body>
+	
+	<h1>Test your reactions!</h1>
+	
+	<p>Click on the boxes and circles as quickly as you can!</p>
+	
+	<p class="bold"><span id="output">You have not attempted yet.</span></p>
+	
+	<div id="box"></div>
+	
+	<script type="text/javascript">
+		
+		var createdTime;
+		var clickedTime;
+		var reactionTime;
+		
+		makeBox();
+		
+		document.getElementById("box").onclick=function() {
+		
+			clickedTime = Date.now();
+		
+			this.style.display="none";
+			
+			reactionTime = (clickedTime - createdTime) / 1000;
+			
+			document.getElementById("output").innerHTML = "Your reaction time was " + reactionTime + " seconds.";
+			
+			makeBox();
+			
+		}
+		
+		
+		function getRandomColor() {
+			var letters = '0123456789ABCDEF'.split('');
+			var color= '#';
+			for (var i=0; i < 6; i++) {
+				color += letters[Math.round(15*Math.random())];
+			}
+			
+			return color;
+		}
+		
+		function makeBox() {
+			
+			setTimeout(function() {
+			
+				var top = 500* Math.random();
+				var left = 100* Math.random();
+				
+				if(Math.random()>0.5) {
+					document.getElementById("box").style.borderRadius="50%";
+				}
+				else {
+					document.getElementById("box").style.borderRadius="0%";
+				}
+				
+				document.getElementById("box").style.top=top + "px";
+				document.getElementById("box").style.left=left + "px";
+				document.getElementById("box").style.backgroundColor=getRandomColor();
+				document.getElementById("box").style.display="block";
+				
+				createdTime=Date.now();
+				
+			}, (5000*Math.random()));
+
+		}
+		
+	</script>
+	
+	
+</body>
+</html>
